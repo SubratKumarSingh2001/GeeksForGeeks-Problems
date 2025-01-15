@@ -1,17 +1,13 @@
-class Solution {
-  public:
-    int majorityElement(vector<int>& arr) {
+#inlcude<iostream>
+using namespace std;
+
+int search(vector<int>& arr, int x) {
+        // Your code here
         for(int i=0; i<arr.size(); i++) {
-            int count=1;
-            for(int j=i+1; j<arr.size(); j++) {
-                if(arr[i] == arr[j]) {
-                    count++;
-                }
-            }
-            if(count>(arr.size()/2)) {
-                return arr[i];
+            if(arr[i] == x) {
+                return i;
             }
         }
         return -1;
     }
-};
+}
