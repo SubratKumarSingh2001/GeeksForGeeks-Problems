@@ -1,11 +1,27 @@
-int reverseDigits(int n) {
+class Solution {
+  public:
+    int reverseDigits(int n) {
         // Code here
-        // TC:O(n^2) SC:O(n)
-        int num=0; 
-        while(n) {
-            int rem = n%10;
-            num = num*10 + rem;
-            n = n/10;
+        //TC: O(n), SC: O(1)
+        int m = n;
+        //if in beginning the value of m is leass than equal to INt_MIN return 0
+        if(m <= INT_MIN) {
+            return 0;
         }
-        return num;
+        if(n < 0) {
+            m = -m;
+        }  
+        int ans = 0;
+        while(m) {
+            if(ans > INT_MAX/10) {
+                return 0;
+            }
+            int rem = m % 10;
+            ans = ans*10 + rem;
+            m /= 10;
+        }
+        
+        if(n < 0) return -ans;
+        else return ans;
     }
+};
