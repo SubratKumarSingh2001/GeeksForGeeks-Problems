@@ -4,36 +4,23 @@ class Solution {
     Node* segregate(Node* head) {
 
         // Add code here
-        int count=0;
+        //TC: O(n), where n is the no.of nodes in LL, SC: O(1)
         Node* temp = head;
-        while(temp != NULL) {
-            count++;
-            temp = temp->next;
-        }
-        
-        temp=head;
         int zeros=0, ones=0, twos=0;
-        while(count) {
-            if(temp->data == 0) {
-                zeros++;
-            }
-            else if(temp->data == 1) {
-                ones++;
-            }
-            else if(temp->data == 2) {
-                twos++;
-            }
+        while(temp != NULL) {
+            if(temp->data == 0) zeros++;
+            else if(temp->data == 1) ones++;
+            else twos++;
             temp = temp->next;
-            count--;
         }
-        
+        //as of know wee have how many zeros, ones and twos in LL
         temp = head;
         while(zeros--) {
             temp->data = 0;
             temp = temp->next;
         }
         while(ones--) {
-            temp->data = 1;
+           temp->data = 1;
             temp = temp->next;
         }
         while(twos--) {
